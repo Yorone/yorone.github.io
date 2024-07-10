@@ -4356,7 +4356,7 @@ h1.page-title + .tag-cloud-list {
 }
 #waline-wrap {
   --waline-font-size: 1.1em;
-  --waline-theme-color: #49b1f5;
+  --waline-theme-color:transparent;
   --waline-active-color: #ff7242;
 }
 #waline-wrap .wl-comment-actions > button:not(last-child) {
