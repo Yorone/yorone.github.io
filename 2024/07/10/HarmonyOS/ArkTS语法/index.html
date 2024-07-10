@@ -1,0 +1,252 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>ArkTS基础语法 | YORONE's BLOG</title><meta name="author" content="Yorone"><meta name="copyright" content="Yorone"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="ArkTS基础语法ArkTS基本概念 什么是ArkTS？ArkTS是HarmonyOS生态的应用开发语言 ArkTS提供了声明式UI范式、状态管理支持等相应的能力，让开发者可以以更简洁、更自然的方式开发应用。 同时，它在保持TypeScript(简称TS)基本语法风格的基础上，进一步通过规范强化静态检查和分析，使得在程序运行之前的开发期能检测更多错误，提升代码健壮性，并实现更好的运行性能。 针对J">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ArkTS基础语法">
+<meta property="og:url" content="https://yorone.github.io/2024/07/10/HarmonyOS/ArkTS%E8%AF%AD%E6%B3%95/index.html">
+<meta property="og:site_name" content="YORONE&#39;s BLOG">
+<meta property="og:description" content="ArkTS基础语法ArkTS基本概念 什么是ArkTS？ArkTS是HarmonyOS生态的应用开发语言 ArkTS提供了声明式UI范式、状态管理支持等相应的能力，让开发者可以以更简洁、更自然的方式开发应用。 同时，它在保持TypeScript(简称TS)基本语法风格的基础上，进一步通过规范强化静态检查和分析，使得在程序运行之前的开发期能检测更多错误，提升代码健壮性，并实现更好的运行性能。 针对J">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2024-07-10T15:28:00.000Z">
+<meta property="article:modified_time" content="2024-07-10T15:32:40.054Z">
+<meta property="article:author" content="Yorone">
+<meta property="article:tag" content="ArkTS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yorone.github.io/2024/07/10/HarmonyOS/ArkTS%E8%AF%AD%E6%B3%95/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'ArkTS基础语法',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-07-10 23:32:40'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="YORONE's BLOG"><span class="site-name">YORONE's BLOG</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">ArkTS基础语法</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-07-10T15:28:00.000Z" title="发表于 2024-07-10 23:28:00">2024-07-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-07-10T15:32:40.054Z" title="更新于 2024-07-10 23:32:40">2024-07-10</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="ArkTS基础语法"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="ArkTS基础语法"><a href="#ArkTS基础语法" class="headerlink" title="ArkTS基础语法"></a>ArkTS基础语法</h1><h2 id="ArkTS基本概念"><a href="#ArkTS基本概念" class="headerlink" title="ArkTS基本概念"></a>ArkTS基本概念</h2><ul>
+<li>什么是ArkTS？<br>ArkTS是HarmonyOS生态的应用开发语言</li>
+<li>ArkTS提供了<strong>声明式UI范式、状态管理支持</strong>等相应的能力，让开发者可以以更简洁、更自然的方式开发应用。</li>
+<li>同时，它在保持TypeScript(简称TS)基本语法风格的基础上，进一步通过<strong>规范强化静态检查和分析</strong>，使得在程序运行之前的开发期能检测更多错误，提升代码健壮性，并实现更好的运行性能。</li>
+<li>针对JS&#x2F;TS并发能力支持有限的问题，ArkTS对并发编程API和能力进行了增强。</li>
+<li>ArkTS支持与TS&#x2F;JS高效互操作，兼容TS&#x2F;JS生态。</li>
+</ul>
+<p><strong>ArkTS基于TypeScript的增强–规格的代码更好地保证正确性和性能</strong></p>
+<ol>
+<li><p>通过规范约束不合适的特性<br> ArkTS规范约束TS中过于灵活而影响开发正确性或者给运行时带来不必要额外开销的特性，由此可在静态分析阶段获取更确定和稳定的信息，提升代码健壮性和性能。<br> <strong>约束示例</strong>：</p>
+<ul>
+<li>强化静态类型检查：ArkTS要求所有类型在程序实际运行前都是已知的，减少运行时的类型检测，提升性能</li>
+<li>限制在运行时改变对象布局：为实现最大性能，ArkTS要求程序执行期间不能更改对象布局。</li>
+</ul>
+</li>
+<li><p>保留公共子集<br> 保留好的特性，语义与标准TS一致</p>
+<ul>
+<li>严格模式</li>
+<li>空值安全</li>
+</ul>
+</li>
+<li><p>增加新特性<br> 结合应用的开发体验和执行需求，ArkTS增加更多功能</p>
+<ul>
+<li>并发增强</li>
+<li>UI范式所依赖特性</li>
+</ul>
+<p> <strong>ArkTS对UI的拓展</strong></p>
+<ol>
+<li>UI描述<br> UI描述语法提供了各种装饰器、自定义组件和UI描述机制，再配合UI开发框架中的UI内置组件、实践方法、属性方法等共同构成了应用开发的主体</li>
+<li>状态管理<br> 状态管理语法实现UI相关联的数据在组件内、组件间、页面内、应用内以及跨设备传递。</li>
+</ol>
+<p> <img src="/image.png" alt="AT"></p>
+</li>
+</ol>
+<h2 id="ArkTS基础知识"><a href="#ArkTS基础知识" class="headerlink" title="ArkTS基础知识"></a>ArkTS基础知识</h2><p>关键字 变量名: 类型注释 &#x3D; 值</p>
+<ul>
+<li>变量声明: let count: number &#x3D; 0</li>
+<li>常量声明：const MAX_COUNT: number &#x3D; 100;</li>
+</ul>
+<p><strong>基本类型</strong>: string, number, boolean …<br><strong>引用类型</strong>: Object, Array, 自定义类等<br><strong>枚举类型</strong>: Enum</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">enum ColorSet &#123; White = 0xFF, Grey = 0x7F, Black = 0x00 &#125;</span><br><span class="line">let c: ColorSet = ColorSet.Black;</span><br></pre></td></tr></table></figure>
+
+<p><strong>联合类型</strong>: Union</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class Cat &#123; sleep () &#123;&#125;; meow () &#123;&#125; &#125;</span><br><span class="line">class Dog &#123; sleep () &#123;&#125;; bark () &#123;&#125; &#125;</span><br><span class="line">class Frog &#123; sleep () &#123;&#125;; leap () &#123;&#125; &#125;</span><br><span class="line"></span><br><span class="line">type Animal = Cat | Dog | Frog | number</span><br><span class="line"></span><br><span class="line">let animal: Animal = new Frog();</span><br><span class="line">if (animal instanceof Frog) &#123;</span><br><span class="line">  let frog: Frog = animal as Frog; // animal在这里是Frog类型</span><br><span class="line">  animal.leap();</span><br><span class="line">  frog.leap();</span><br><span class="line">  // 结果：青蛙跳了两次</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">animal.sleep (); // 任何动物都可以睡觉</span><br></pre></td></tr></table></figure>
+
+<p><strong>类型别名</strong>: Aliases</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">type Matrix = number[][];</span><br><span class="line">type Handler = (s: string, no: number) =&gt; string;</span><br><span class="line">type Predicate &lt;T&gt; = (x: T) =&gt; Boolean;</span><br><span class="line">type NullableObject = Object | null;</span><br></pre></td></tr></table></figure>
+
+<p><strong>空安全</strong><br>一般来说，有时会存在声明变量时不确定初始值。在这类情况下，通常使用联合类型包含null值</p>
+<p><strong>空安全机制的三种方式</strong> 空安全机制</p>
+<ol>
+<li><p>使用if &#x2F; else进行判空</p>
+</li>
+<li><p>使用空值合并表达式，??左边的值为null时会返回表达式右边的值</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let name: string | null = null</span><br><span class="line">const res = name ?? &#x27;&#x27;;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>使用?可选链，如果是null，运算符会返回undefined</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let name: string | null = &#x27;aa&#x27;</span><br><span class="line">const len = name ?.length;</span><br></pre></td></tr></table></figure>
+
+<p><strong>类型安全与类型推断</strong></p>
+<ul>
+<li><p>ArkTS是类型安全的语言，编译器会进行类型检查，实时提示错误信息</p>
+</li>
+<li><p>ArkTS支持自动类型推导，没有指定类型时，ArkTS支持使用类型推断自动选择合适的类型</p>
+</li>
+</ul>
+<h3 id="语句"><a href="#语句" class="headerlink" title="语句"></a>语句</h3><p><strong>条件语句</strong><br><strong>循环语句</strong></p>
+<h2 id="函数的声明和使用"><a href="#函数的声明和使用" class="headerlink" title="函数的声明和使用"></a>函数的声明和使用</h2><p><strong>箭头函数 &#x2F; lambda表达式</strong> 简化函数声明，通常用于需要一个简单函数的地方<br>function 函数名(参数列表): 返回类型 &#x3D;&gt; {函数体}</p>
+<ul>
+<li><p>箭头函数的返回类型可以省略，省略时，返回类型通过函数体推断</p>
+</li>
+<li><p>执行体只有一行的情况下可以省略花括号</p>
+</li>
+<li><p>箭头函数常用于回调函数</p>
+</li>
+</ul>
+<p><strong>闭包函数</strong> 一个函数可以将另一个函数当做返回值，保留对内部作用域的访问</p>
+<p><strong>函数类型</strong> 将一个函数声明定义为一个类型，函数参数或者返回值</p>
+<h2 id="类的声明和使用"><a href="#类的声明和使用" class="headerlink" title="类的声明和使用"></a>类的声明和使用</h2><p><strong>类的声明</strong> ArkTs支持基于类的面向对象的编程方式，定义类的关键字为class，后面紧跟类名，类的声明描述了所创建的对象共同的属性和方法<br><strong>类的创建</strong></p>
+<p><strong>构造器</strong> constructor用于实例化时进行初始化操作</p>
+<p><strong>方法</strong> 用于描述定义类的实例化对象具有的行为</p>
+<p><strong>继承</strong> 子类继承父类的特征和行为。ArkTS中允许使用继承来扩展现有的类，关键字extends</p>
+<p><strong>多态</strong> 子类继承父类，并可以<em>重写</em>父类方法，使不同的实例对象对同一行为有不同的表现</p>
+<h2 id="接口的声明和使用"><a href="#接口的声明和使用" class="headerlink" title="接口的声明和使用"></a>接口的声明和使用</h2><p><strong>接口</strong><br><strong>接口的声明</strong> </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">interface AreaSize &#123;</span><br><span class="line">    width: number; // 属性声明</span><br><span class="line">    height: number;</span><br><span class="line">    calculateAreaSize(): number; // 方法的声明 </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>接口的使用</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let area: AreaSize = &#123; width: 100, height: 100 &#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>接口的实现</strong><br>implements</p>
+<h2 id="模块的导入和导出"><a href="#模块的导入和导出" class="headerlink" title="模块的导入和导出"></a>模块的导入和导出</h2><p><strong>模块的定义</strong><br>一个ArkTS文件的作用域是独立的</p>
+<p><strong>模块的导入与导出</strong><br>通过export导出一个文件的变量、函数、类等</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://yorone.github.io">Yorone</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://yorone.github.io/2024/07/10/HarmonyOS/ArkTS%E8%AF%AD%E6%B3%95/">https://yorone.github.io/2024/07/10/HarmonyOS/ArkTS%E8%AF%AD%E6%B3%95/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yorone.github.io" target="_blank">YORONE's BLOG</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/ArkTS/">ArkTS</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/07/10/HarmonyOS/DevEco%E4%BD%BF%E7%94%A8/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info"></div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Yorone</div><div class="author-info__description">世事难如愿, 但白水煮一切</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ArkTS%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">ArkTS基础语法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ArkTS%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.</span> <span class="toc-text">ArkTS基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ArkTS%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">1.2.</span> <span class="toc-text">ArkTS基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%AD%E5%8F%A5"><span class="toc-number">1.2.1.</span> <span class="toc-text">语句</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E5%A3%B0%E6%98%8E%E5%92%8C%E4%BD%BF%E7%94%A8"><span class="toc-number">1.3.</span> <span class="toc-text">函数的声明和使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E5%A3%B0%E6%98%8E%E5%92%8C%E4%BD%BF%E7%94%A8"><span class="toc-number">1.4.</span> <span class="toc-text">类的声明和使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%A3%B0%E6%98%8E%E5%92%8C%E4%BD%BF%E7%94%A8"><span class="toc-number">1.5.</span> <span class="toc-text">接口的声明和使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97%E7%9A%84%E5%AF%BC%E5%85%A5%E5%92%8C%E5%AF%BC%E5%87%BA"><span class="toc-number">1.6.</span> <span class="toc-text">模块的导入和导出</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/10/HarmonyOS/ArkTS%E8%AF%AD%E6%B3%95/" title="ArkTS基础语法">ArkTS基础语法</a><time datetime="2024-07-10T15:28:00.000Z" title="发表于 2024-07-10 23:28:00">2024-07-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/10/HarmonyOS/DevEco%E4%BD%BF%E7%94%A8/" title="无题">无题</a><time datetime="2024-07-10T09:38:53.773Z" title="发表于 2024-07-10 17:38:53">2024-07-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/09/HarmonyOS/HarmonyOS%E7%AE%80%E4%BB%8B/" title="HarmonyOS简介">HarmonyOS简介</a><time datetime="2024-07-09T08:51:44.000Z" title="发表于 2024-07-09 16:51:44">2024-07-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/09/Hello/hello-world/" title="Hello World">Hello World</a><time datetime="2024-07-09T07:17:41.371Z" title="发表于 2024-07-09 15:17:41">2024-07-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Yorone</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
